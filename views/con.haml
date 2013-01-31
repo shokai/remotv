@@ -1,0 +1,9 @@
+- content_for :html_foot do
+  %script{:type => "text/javascript", :src => cometio_js}
+  %script{:type => "text/javascript", :src => "#{app_root}/js/con.js"}
+
+%div
+  %h1= @title
+  %p
+    %input{:type => :text, :id => :url, :size => 40, :value => "http://shokai.org"}
+    %input{:type => :button, :id => :btn_url, :value => "go"}

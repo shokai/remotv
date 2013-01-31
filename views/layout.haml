@@ -1,0 +1,16 @@
+!!! XHTML
+%html{:lang => "en"}
+  %head
+    %meta{"http-equiv" => "Content-Type", :content => "text/html", :charset => "UTF-8"}
+    %title= @title
+    %link{:rel => "stylesheet", :href => "#{app_root}/main.css", :type => "text/css"}
+    != yield_content :html_head
+  %body
+    %div.navbar
+      %a{:href => app_root} home
+    %div.container
+      %div#main
+        != yield
+    %script{:type => "text/javascript", :src => "#{app_root}/js/jquery.js"}
+    %script{:type => "text/javascript", :src => "#{}"}
+    != yield_content :html_foot
