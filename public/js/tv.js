@@ -19,5 +19,6 @@ io.on("go", function(data){
 });
 
 io.on("scroll", function(data){
-  console.log(data);
+  if(data.y) tv.scrollY(data.y);
+  if(data.x) tv.scrollX(data.x);
 });

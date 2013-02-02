@@ -7,6 +7,11 @@ CometIO.on :go do |data, from|
   self.push :go, data
 end
 
+CometIO.on :scroll do |data, session|
+  puts "scroll #{data}"
+  self.push :scroll, data
+end
+
 get '/' do
   @title = app_name
   haml :index
