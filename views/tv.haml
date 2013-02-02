@@ -5,7 +5,8 @@
     %title= @title
     %link{:rel => "stylesheet", :href => "#{app_root}/tv.css", :type => "text/css"}
   %body
-    %iframe{:id => :tv, :width => "100%", :height => "100%", :src => @url}
-  %script{:type => "text/javascript", :src => "#{app_root}/js/jquery.js"}
-  %script{:type => "text/javascript", :src => cometio_js}
-  %script{:type => "text/javascript", :src => "#{app_root}/js/tv.js"}
+    %div{:id => "tv"}
+    %script{:type => "text/javascript", :src => "#{app_root}/js/jquery.js"}
+    %script{:type => "text/javascript", :src => cometio_js}
+    %script{:type => "text/javascript", :src => "#{app_root}/js/xframe.js"}
+    %script{:type => "text/javascript", :src => "#{app_root}/js/tv.js"}
