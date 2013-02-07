@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'bundler/setup'
 Bundler.require
+require 'sinatra/cometio'
 if development?
   $stdout.sync = true
   require 'sinatra/reloader'
