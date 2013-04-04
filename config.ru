@@ -13,5 +13,8 @@ require File.expand_path 'bootstrap', File.dirname(__FILE__)
 Bootstrap.init :helpers, :controllers
 
 set :haml, :escape_html => true
+set :cometio, :timeout => 120, :post_interval => 1
+set :websocketio, :port => (ENV['WS_PORT'] || 8080).to_i
+set :rocketio, :comet => true, :websocket => true
 
 run Sinatra::Application
