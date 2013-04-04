@@ -1,8 +1,10 @@
-var io = new RocketIO().connect();
+var io = new RocketIO({channel: channel}).connect();
 
 io.on("connect", function(){
   console.log("connect!! "+io.session);
+});
 
+$(function(){
   $("#btn_url").click(function(){
     var url = $("#url").val();
     console.log("go "+ url);

@@ -1,4 +1,4 @@
-var io = new RocketIO().connect();
+var io = new RocketIO({channel: channel}).connect();
 var tv = null;
 
 $(function(){

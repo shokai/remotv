@@ -1,3 +1,7 @@
+- content_for :html_head do
+  :javascript
+    var channel = "#{@channel.to_remote}";
+
 - content_for :html_foot do
   %script{:type => "text/javascript", :src => rocketio_js}
   %script{:type => "text/javascript", :src => "#{app_root}/js/remote.js"}

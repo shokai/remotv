@@ -4,6 +4,9 @@
     %meta{"http-equiv" => "Content-Type", :content => "text/html", :charset => "UTF-8"}
     %title= @title
     %link{:rel => "stylesheet", :href => "#{app_root}/tv.css", :type => "text/css"}
+    :javascript
+      var channel = "#{@channel.to_tv}";
+
   %body
     %div{:id => "tv"}
     %script{:type => "text/javascript", :src => "#{app_root}/js/jquery.js"}
