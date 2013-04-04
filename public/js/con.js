@@ -1,7 +1,7 @@
-var io = new CometIO().connect();
+var io = new RocketIO().connect();
 
-io.on("connect", function(session){
-  console.log("connect!! "+session);
+io.on("connect", function(){
+  console.log("connect!! "+io.session);
 
   $("#btn_url").click(function(){
     var url = $("#url").val();

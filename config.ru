@@ -1,14 +1,16 @@
 require 'rubygems'
-require 'bundler/setup'
+require 'bundler'
 Bundler.require
-require 'sinatra/cometio'
+require 'sinatra'
+require 'sinatra/rocketio'
+require 'sinatra/contrib'
 if development?
   $stdout.sync = true
   require 'sinatra/reloader'
 end
 
 require File.expand_path 'bootstrap', File.dirname(__FILE__)
-Bootstrap.init :inits, :helpers, :controllers
+Bootstrap.init :helpers, :controllers
 
 set :haml, :escape_html => true
 

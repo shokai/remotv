@@ -1,12 +1,12 @@
-var io = new CometIO().connect();
+var io = new RocketIO().connect();
 var tv = null;
 
 $(function(){
   tv = new XFrame("div#tv");
 });
 
-io.on("connect", function(session){
-  console.log("connect!! "+session);
+io.on("connect", function(){
+  console.log("connect!! "+io.session);
 });
 
 io.on("error", function(err){

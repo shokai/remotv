@@ -1,15 +1,17 @@
-CometIO.on :connect do |session|
-  puts "new client <#{session}>"
+io = Sinatra::RocketIO
+
+io.on :connect do |client|
+  puts "new client <#{client.session}>"
 end
 
-CometIO.on :go do |data, from|
-  puts "go #{data['url']}  (from:#{from})"
-  self.push :go, data
+io.on :go do |data, client|
+  puts "go #{data['url']}  <#{client}>"
+  push :go, data
 end
 
-CometIO.on :scroll do |data, session|
+io.on :scroll do |data, client|
   puts "scroll #{data}"
-  self.push :scroll, data
+  push :scroll, data
 end
 
 get '/' do
