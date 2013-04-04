@@ -25,7 +25,7 @@ get '/tv' do
   haml :tv, :layout => false
 end
 
-get '/con' do
+get '/remote' do
   @title = app_name
-  haml :con
+  haml :remote
 end
