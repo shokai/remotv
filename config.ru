@@ -15,6 +15,6 @@ Bootstrap.init :libs, :helpers, :controllers
 set :haml, :escape_html => true
 set :cometio, :timeout => 60, :post_interval => 1
 set :websocketio, :port => (ENV['WS_PORT'] || 8080).to_i
-set :rocketio, :comet => true, :websocket => true
+set :rocketio, :comet => true, :websocket => (ENV['WS'] == 'disable' ? false : true)
 
 run Sinatra::Application

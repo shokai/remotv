@@ -21,6 +21,13 @@ Run
 => http://localhost:5000
 
 
+options
+
+    % rackup config.ru -p 5000
+    % WS_PORT=18080 rackup config.ru -p 5000
+    % WS=disable rackup config.ru -p 5000
+
+
 Deploy
 ------
 
