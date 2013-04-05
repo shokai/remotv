@@ -1,16 +1,25 @@
+- content_for :html_head do
+  :javascript
+    var app_root = "#{app_root}";
+
+- content_for :html_foot do
+  %script{:src => "#{app_root}/js/index.js"}
+
 %div
   %h1= @title
   %p
     TV remote controller
-  %p
-    %a{:href => "#{app_root}/tv/1"} TV
-  %p
-    %a{:href => "#{app_root}/remote/1"} Remote Controller
-  %h2 channels
+  %h2 Create
+  %div#create
+    %span ch:
+    %input#channel_id{:type => :text, :size => 15, :value => 10}
+    %input#btn_create_tv{:type => :button, :value => 'TV'}
+    %input#btn_create_remote{:type => :button, :value => 'Remote'}
+  %h2 Channels
   %table
     - channels.each do |c|
       %tr
-        %td= c
+        %td= "ch:#{c}"
         %td
           %a{:href => "#{app_root}/tv/#{c}"}
             TV

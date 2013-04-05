@@ -3,7 +3,7 @@
   %head
     %meta{"http-equiv" => "Content-Type", :content => "text/html", :charset => "UTF-8"}
     %title= @title
-    %link{:rel => "stylesheet", :href => "#{app_root}/main.css", :type => "text/css"}
+    %link{:rel => "stylesheet", :href => "#{app_root}/main.css"}
     != yield_content :html_head
   %body
     %div.navbar
@@ -11,6 +11,5 @@
     %div.container
       %div#main
         != yield
-    %script{:type => "text/javascript", :src => "#{app_root}/js/jquery.js"}
-    %script{:type => "text/javascript", :src => "#{}"}
+    %script{:src => "#{app_root}/js/jquery.js"}
     != yield_content :html_foot
