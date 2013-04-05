@@ -6,3 +6,14 @@
     %a{:href => "#{app_root}/tv/1"} TV
   %p
     %a{:href => "#{app_root}/remote/1"} Remote Controller
+  %h2 channels
+  %table
+    - channels.each do |c|
+      %tr
+        %td= c
+        %td
+          %a{:href => "#{app_root}/tv/#{c}"}
+            TV
+        %td
+          %a{:href => "#{app_root}/remote/#{c}"}
+            Remote
