@@ -1,12 +1,18 @@
 io = Sinatra::RocketIO
+cache = TmpCache::Cache.new
 
 io.on :connect do |client|
+  channel = Channel.parse client.channel
   puts "new client <#{client}>"
+  data = cache.get(channel.to_s)
+  push :go, data, :to => client.session if data
 end
 
 io.on :go do |data, client|
+  channel = Channel.parse client.channel
   puts "go #{data['url']}  <#{client}>"
-  push :go, data, :channel => Channel.parse(client.channel).to_tv
+  cache.set(channel.to_s, data, 60)
+  push :go, data, :channel => channel.to_tv
 end
 
 io.on :scroll do |data, client|
