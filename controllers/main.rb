@@ -1,5 +1,6 @@
 io = Sinatra::RocketIO
 cache = TmpCache::Cache.new
+expire = 60*60
 
 io.on :connect do |client|
   channel = Channel.parse client.channel
@@ -14,7 +15,7 @@ io.on :go do |url, client|
   channel = Channel.parse client.channel
   puts "go #{url}  <#{client}>"
   data = {:url => url, :left => 0, :top => 0}
-  cache.set channel.to_s, data, 60
+  cache.set channel.to_s, data, expire
   push :go, data, :channel => channel.to_tv
 end
 
@@ -26,7 +27,7 @@ io.on :scroll do |scroll, client|
   data[:left] = 0 if data[:left] < 0
   data[:top] += scroll['y'].to_i
   data[:top] = 0 if data[:top] < 0
-  cache.set channel.to_s, data, 60
+  cache.set channel.to_s, data, expire
   push :scroll, data, :channel => channel.to_tv
 end
 
