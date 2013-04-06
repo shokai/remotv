@@ -44,6 +44,8 @@ end
 
 get '/remote/:channel' do
   @channel = Channel.new params[:channel]
+  data = cache.get(@channel.to_s)
+  @url = data ? data[:url] : 'http://yahoo.co.jp'
   @title = "#{app_name} remote ch:#{@channel}"
   haml :remote
 end
