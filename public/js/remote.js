@@ -12,16 +12,16 @@ $(function(){
   });
 
   $("#btn_up").click(function(){
-    io.push("scroll_y", -20);
+    io.push("scroll", {y: -20, x: 0});
   });
   $("#btn_down").click(function(){
-    io.push("scroll_y", 20);
+    io.push("scroll", {y: 20, x: 0});
   });
   $("#btn_left").click(function(){
-    io.push("scroll_x", -20);
+    io.push("scroll", {x: -20, y: 0});
   });
   $("#btn_right").click(function(){
-    io.push("scroll_x", 20);
+    io.push("scroll", {x: 20, y: 0});
   });
 });
 

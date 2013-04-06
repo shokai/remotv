@@ -18,22 +18,16 @@ io.on :go do |url, client|
   push :go, data, :channel => channel.to_tv
 end
 
-io.on :scroll_x do |x, client|
+io.on :scroll do |scroll, client|
   channel = Channel.parse client.channel
-  puts "scroll_x #{x} <#{client}>"
+  puts "scroll #{scroll} <#{client}>"
   data = cache.get channel.to_s
-  data[:left] += x.to_i
+  data[:left] += scroll['x'].to_i
+  data[:left] = 0 if data[:left] < 0
+  data[:top] += scroll['y'].to_i
+  data[:top] = 0 if data[:top] < 0
   cache.set channel.to_s, data, 60
-  push :scroll_left, data[:left], :channel => channel.to_tv
-end
-
-io.on :scroll_y do |y, client|
-  channel = Channel.parse client.channel
-  puts "scroll_y #{y} <#{client}>"
-  data = cache.get channel.to_s
-  data[:top] += y.to_i
-  cache.set channel.to_s, data, 60
-  push :scroll_top, data[:top], :channel => channel.to_tv
+  push :scroll, data, :channel => channel.to_tv
 end
 
 get '/' do

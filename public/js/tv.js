@@ -20,10 +20,7 @@ io.on("go", function(data){
   tv.top = data.top || 0;
 });
 
-io.on("scroll_left", function(left){
-  tv.left = left;
-});
-
-io.on("scroll_top", function(top){
-  tv.top = top;
+io.on("scroll", function(position){
+  tv.left = position.left;
+  tv.top = position.top;
 });
