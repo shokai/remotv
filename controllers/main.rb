@@ -1,6 +1,6 @@
 io = Sinatra::RocketIO
 cache = TmpCache::Cache.new
-expire = 60*60
+expire = (ENV['CACHE_EXPIRE'] || 60*60).to_i
 
 io.on :connect do |client|
   channel = Channel.parse client.channel

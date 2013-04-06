@@ -38,4 +38,11 @@ Deploy
 disable websocket
 
     % heroku config:set WS=disable
+
+set cache expire (sec)
+
+    % heroku config:set CACHE_EXPIRE=3600
+
+restart
+
     % heroku restart
