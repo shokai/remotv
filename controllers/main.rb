@@ -5,19 +5,29 @@ io.on :connect do |client|
   channel = Channel.parse client.channel
   puts "new client <#{client}>"
   data = cache.get(channel.to_s)
-  push :go, data, :to => client.session if data
+  if data
+    push :go, data, :to => client.session
+  end
 end
 
-io.on :go do |data, client|
+io.on :go do |url, client|
   channel = Channel.parse client.channel
-  puts "go #{data['url']}  <#{client}>"
+  puts "go #{url}  <#{client}>"
+  data = {:url => url, :x => 0, :y => 0}
   cache.set(channel.to_s, data, 60)
   push :go, data, :channel => channel.to_tv
 end
 
-io.on :scroll do |data, client|
-  puts "scroll #{data} <#{client}>"
-  push :scroll, data, :channel => Channel.parse(client.channel).to_tv
+io.on :scroll_x do |x, client|
+  channel = Channel.parse client.channel
+  puts "scroll_x #{x} <#{client}>"
+  push :scroll_x, x, :channel => channel.to_tv
+end
+
+io.on :scroll_y do |y, client|
+  channel = Channel.parse client.channel
+  puts "scroll_y #{y} <#{client}>"
+  push :scroll_y, y, :channel => channel.to_tv
 end
 
 get '/' do

@@ -16,9 +16,14 @@ io.on("error", function(err){
 io.on("go", function(data){
   console.log("load "+data.url);
   tv.load(data.url)
+  tv.left = data.left || 0;
+  tv.top = data.top || 0;
 });
 
-io.on("scroll", function(data){
-  if(data.y) tv.scrollY(data.y);
-  if(data.x) tv.scrollX(data.x);
+io.on("scroll_x", function(x){
+  tv.scrollX(x);
+});
+
+io.on("scroll_y", function(y){
+  tv.scrollY(y);
 });
